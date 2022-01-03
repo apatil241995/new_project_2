@@ -1,0 +1,633 @@
+
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="home.scc.html">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+    <script src="https://use.fontawesome.com/ed8f853806.js"></script>
+    <script src="https://kit.fontawesome.com/f919b5a891.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body background="{% static 'img/a.jpg' %}">
+    <div id="abc" class="flex-contaner">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="abcd">
+          <!-- foodworld -->
+            <a class="navbar-brand" href="http://127.0.0.1:8000/home/v1/" style="max-width: 30%;"><img src="{% static 'img/logo.jpg' %}" class="img-fluid"><i class="fab fa-fonticons-foodworld"></i></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="http://127.0.0.1:8000/home/v1/">Home</a>
+                </li>
+<!--                <li class="nav-item dropdown">-->
+<!--                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Categary</a>-->
+<!--                </li>-->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-expanded="false">
+                    LOGIN
+                  </a>
+                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <div>
+                          <a class="dropdown-item" href="customer/v1/c_login_page/">Costomer login</a>
+                          </div>
+                    <a class="dropdown-item" onclick=href="restaurant/v1/page/">Staff Login</a>
+                  </div>
+                </li>
+                  <form id="cart" action="/home/v1/customer/v1/cart/" method="get">
+                      <button type="submit" name="1" formmethod="get" form="cart" class="btn btn-dark"><i class="fas fa-shopping-cart"></i></button>
+                      </form>
+              </ul>
+              <form class="form-inline my-2 my-lg-0 align-items-lg-center">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0 mr-2 ml-2" type="submit">Search</button>
+              </form>
+                <form method="get">
+              <a name="{{ c_name }}" href="http://localhost:63342/new_project/demo/Templates/profile.html?_ijt=10fgm01oivbub1el8ucmk9bl62&_ij_reload">
+              <i class="fas fa-user fa-3x align-items-end mr-1 ml-1"></i>
+            </a>
+                    </form>
+            </div>
+          </nav>
+          <!-- carousel -->
+
+    <div class="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" id="imge">
+          <div class="carousel-item active">
+            <img src="{% static 'img/2x.jpg' %}" class="d-block w-100 image" alt="01" width="30px" height="400px">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'img/10.jpg' %}" class="d-block w-100 image" alt="02" width="30px" height="400px">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'img/80.jpg' %}" class="d-block w-100 image" alt="03" width="30px" height="400px">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </button>
+      </div>
+    </div><br><br>
+        <div class="items">
+<form method="post" >
+    {% for food in food_details %}
+        <!-- card -->
+    <div class="card">
+              <div class="name">
+                  <img src="{{ food.food_image }}" class="card__image" alt="...">
+                            <h3 class="card__title">{{ food.food_name }}</h3>
+                            <span class="card__status">RS.{{ food.food_price }}</span>
+                  </div>
+                      <div class="card-body">
+                          <form action="add/" id="food">
+                            <div class="caption">
+                             <button type="submit" name="{{ food.food_name }}"  value="{{ c_name }}" formmethod="post" form="food" class="btn btn-primary float-right">Add</button>
+                             </div>
+                         </form>
+                      </div>
+
+
+    </div>
+    {% endfor %}
+</form>
+        </div>
+        <!-- footer logo -->
+    <div>
+            <!-- <div class="main"></div> -->
+     <footer class="footer-distributed container-flex max-width=100%">
+
+     <div class="footer-left">
+
+     <h3>foodworld<span>Hungry?</span></h3>
+
+     <p class="footer-links">
+     <a href="http://127.0.0.1:8000/home/v1/">Home</a>
+     ·
+     <a href="#">Blog</a>
+     ·
+     <a href="#">Pricing</a>
+     ·
+     <a href="#">About</a>
+     ·
+     <a href="#">Faq</a>
+     ·
+     <a href="#">Contact</a>
+     </p>
+
+     <p class="footer-company-name">Food World &copy; 2021</p>
+     </div>
+
+     <div class="footer-center">
+
+     <div>
+     <i class="fas fa-map-marker-alt"></i>
+     <p><span>21 Revolution Street</span> Delhi, India</p>
+     </div>
+
+     <div>
+     <i class="fas fa-phone"></i>
+     <p>+1 555 123456</p>
+     </div>
+
+     <div>
+     <i class="fas fa-at"></i>
+     <p><a href="mailto:Foodword@Hungry.com">contact@foodworld.com</a></p>
+     </div>
+
+     </div>
+
+     <div class="footer-right">
+
+     <p class="footer-company-about">
+     <span>About the Restraunt</span>
+     Food world is the place where Hunger goes defeted &amp; SEO Hyngry.
+     </p>
+
+     <div class="footer-icons">
+
+     <a href="#"><i class="fab fa-facebook"></i></a>
+     <a href="#"><i class="fab fa-twitter"></i></a>
+     <a href="#"><i class="fab fa-instagram"></i></a>
+     <a href="#"><i class="fab fa-youtube"></i></a>
+
+     </div>
+     </div>
+
+     </footer>
+    </div>
+        <style>
+     .card-body{
+     padding: 10px;
+     }
+    .foodworld {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
+  margin-right: 25px;
+  position: relative;
+  }
+         body {
+     margin: 0;
+     padding: 0;
+     height: auto;
+    }
+    .main {
+     max-height: 550px;;
+     background-color: #292c2f;
+     color: white;
+     font-size: 38pt;
+     text-align: center;
+     line-height: 450px;
+    }
+    footer{
+     position: flex;
+     bottom: 0;
+     width: 100%;
+    }
+    .footer-distributed{
+     background-color: #292c2f;
+     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+     box-sizing: border-box;
+     width: 100%;
+     text-align: left;
+     font: bold 16px sans-serif;
+
+     padding: 55px 50px;
+     margin-top: 80px;
+    }
+
+    .footer-distributed .footer-left,
+    .footer-distributed .footer-center,
+    .footer-distributed .footer-right{
+     display: inline-block;
+     vertical-align: top;
+    }
+
+    .footer-distributed .footer-left{
+     width: 40%;
+    }
+
+    .footer-distributed h3{
+     color:  #ffffff;
+     font: normal 36px 'Cookie', cursive;
+     margin: 0;
+    }
+
+    .footer-distributed h3 span{
+     color:  #5383d3;
+    }
+
+
+    .footer-distributed .footer-links{
+     color:  #ffffff;
+     margin: 20px 0 12px;
+     padding: 0;
+    }
+
+    .footer-distributed .footer-links a{
+     display:inline-block;
+     line-height: 1.8;
+     text-decoration: none;
+     color:  inherit;
+    }
+
+    .footer-distributed .footer-company-name{
+     color:  #8f9296;
+     font-size: 14px;
+     font-weight: normal;
+     margin: 0;
+    }
+
+
+    .footer-distributed .footer-center{
+     width: 35%;
+    }
+
+    .footer-distributed .footer-center i{
+     background-color:  #33383b;
+     color: #ffffff;
+     font-size: 25px;
+     width: 38px;
+     height: 38px;
+     border-radius: 50%;
+     text-align: center;
+     line-height: 42px;
+     margin: 10px 15px;
+     vertical-align: middle;
+    }
+
+    .footer-distributed .footer-center i.fa-envelope{
+     font-size: 17px;
+     line-height: 38px;
+    }
+
+    .footer-distributed .footer-center p{
+     display: inline-block;
+     color: #ffffff;
+     vertical-align: middle;
+     margin:0;
+    }
+
+    .footer-distributed .footer-center p span{
+     display:block;
+     font-weight: normal;
+     font-size:14px;
+     line-height:2;
+    }
+
+    .footer-distributed .footer-center p a{
+     color:  #5383d3;
+     text-decoration: none;;
+    }
+
+    .footer-distributed .footer-right{
+     width: 20%;
+    }
+
+    .footer-distributed .footer-company-about{
+     line-height: 20px;
+     color:  #92999f;
+     font-size: 13px;
+     font-weight: normal;
+     margin: 0;
+    }
+
+    .footer-distributed .footer-company-about span{
+     display: block;
+     color:  #ffffff;
+     font-size: 14px;
+     font-weight: bold;
+     margin-bottom: 20px;
+    }
+
+    .footer-distributed .footer-icons{
+     margin-top: 25px;
+    }
+
+    .footer-distributed .footer-icons a{
+     display: inline-block;
+     width: 35px;
+     height: 35px;
+     cursor: pointer;
+     background-color:  #33383b;
+     border-radius: 2px;
+
+     font-size: 20px;
+     color: #ffffff;
+     text-align: center;
+     line-height: 35px;
+
+     margin-right: 3px;
+     margin-bottom: 5px;
+    }
+
+
+    @media (max-width: 680px) {
+
+     .footer-distributed{
+     font: bold 14px sans-serif;
+
+     }
+
+     .footer-distributed .footer-left,
+     .footer-distributed .footer-center,
+     .footer-distributed .footer-right{
+     display: block;
+     width: 100%;
+     margin-bottom: 40px;
+     text-align: center;
+     }
+
+     .footer-distributed .footer-center i{
+     margin-left: 0;
+     }
+     .main {
+     line-height: normal;
+     font-size: auto;
+     }
+
+    }
+    :root {
+
+  --surface-color: #fff;
+  --curve: 10;
+
+}
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+.card-body {
+
+  font-family: 'Noto Sans JP', sans-serif;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+}
+.name{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+    font-size: 5;
+}
+.hover{
+
+  box-sizing: border-box;
+
+  box-shadow: #fff;
+
+}
+
+.cards {
+
+  display: grid;
+
+  grid-template-rows: repeat(minmax(50px, 1fr));
+
+  gap: 2rem;
+
+  margin: 4rem 5vw;
+
+  padding: 5px;
+
+  list-style-type: none;
+
+
+
+}
+.card {
+      background: #ffffff;
+
+      position: relative;
+
+      display: block;
+
+      height: 250px;
+
+      width: 250px;
+
+      border-radius: calc(var(--curve) * 1px);
+
+      overflow: hidden;
+
+      text-decoration: none;
+
+      padding: 20px;
+
+      background-color: #D6F4E5;
+
+}
+
+.card__image {
+
+  width: 225px;
+
+  height: 180px;
+
+  left: 0;
+
+  top: 0;
+
+  padding: 10px;
+
+}
+.card__overlay {
+
+  position: absolute;
+
+  bottom: 0;
+
+  left: 0;
+
+  right: 0;
+
+  z-index: 1;
+
+  border-radius: calc(var(--curve) * 1px);
+
+  background-color: var(--surface-color);
+
+  transform: translateY(100%);
+
+  transition: .2s ease-in-out;
+
+}
+.card:hover .card__overlay {
+
+  transform: translateY(0);
+
+}
+
+.card__header {
+
+  position: relative;
+
+  display: list-item;
+
+  align-items: center;
+
+  gap: 2em;
+
+  padding: 2em;
+
+  border-radius: calc(var(--curve) * 1px) 0 0 0;
+
+  background-color: var(--surface-color);
+
+  transform: translateY(-100%);
+
+  transition: .2s ease-in-out;
+
+}
+
+.card__arc {
+
+  width: 80px;
+
+  height: 50px;
+
+  position: relative;
+
+  bottom: 100%;
+
+  right: 0;
+
+  z-index: 1;
+
+}
+
+.card__arc path {
+
+  fill: var(--surface-color);
+
+  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+
+}
+
+.card:hover .card__header {
+
+  transform: translateY(0);
+
+}
+.card__thumb {
+
+  flex-shrink: 0;
+
+  width: 50px;
+
+  height: 50px;
+
+  border-radius: 50%;
+
+}
+
+.card__title {
+
+  font-size: 1em;
+
+  margin: 0 0 .3em;
+
+  color: #000000;
+
+}
+
+.card__tagline {
+
+  display: block;
+
+  margin: 1em 0;
+
+  font-family: "MockFlowFont";
+
+  font-size: .8em;
+
+  color: #D7BDCA;
+
+}
+
+.card__status {
+
+  font-size: 1em;
+
+  color: #000000;
+
+}
+
+.card__description {
+
+  padding: 0 2em 2em;
+
+  margin: 0;
+
+  color: #D7BDCA;
+
+  font-family: "MockFlowFont";
+
+  display: -webkit-box;
+
+  -webkit-box-orient: vertical;
+
+  -webkit-line-clamp: 3;
+
+  overflow: hidden;
+
+}
+.items{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 20px;
+    margin: 10px;
+    padding: 10px;
+
+}
+.carousel{
+    height: 400px;
+    width: 1190px;
+    padding: 15px;
+    padding-color: #000000;
+    border-radius: calc(var(--curve) * 2px);
+}
+.image{
+border-radius: calc(var(--curve) * 2px);
+}
+
+     </style>
+        </div>      <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+</div>
+    </div>
+</body>
+</html>
+
